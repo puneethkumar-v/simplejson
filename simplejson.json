@@ -1,0 +1,12 @@
+[
+	{
+		"USN": 1,
+		"name": "PK",
+		"Dept": "MCA"
+	},
+	{
+		"USN": 2,
+		"name": "KP",
+		"Dept":"MBA"
+	}
+]

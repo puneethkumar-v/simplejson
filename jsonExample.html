@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSON Data</title>
+		<style>
+			.table {
+				border: 1px solid black;
+			}
+			th,td,tr {
+				padding: .6rem;
+			}
+		</style>
+	</head>
+	<body>
+		<button id="btn">Click Me</button>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>USN</th>
+					<th>Name</th>
+					<th>Dept</th>
+				</tr>
+			</thead>
+			<tbody id="tbody"></tbody>
+		</table>
+		<script>
+			let btn = document.querySelector("#btn");
+			let tbody = document.querySelector("#tbody");
+
+			<!--const parsedData = JSON.parse(data);-->
+			function AddingData() {
+				let tableData = "";
+				fetch("./simplejson.json")
+					.then(res => res.json())
+					.then(data => {
+						console.log(data);
+						data.forEach(a => {
+							let tableBody = `<tr>
+										<td>${a.USN}</td>
+										<td>${a.name}</td>
+										<td>${a.Dept}</td>
+									<tr>`;
+							tableData += tableBody;
+						})
+					})
+					.catch(err => console.log(err))
+				tbody.innerHTML = tableData;
+			}
+			btn.addEventListener("click", AddingData);
+		</script>
+	</body>
+</html>
